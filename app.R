@@ -45,8 +45,7 @@ ui <- dashboardPage(
     menuItem("Get Metadata Template", tabName = "template", icon = icon("table")),
     menuItem("Submit & Validate Metadata", tabName = "upload", icon = icon("upload")),  
     HTML('<footer>
-            Supported by the Human Tumor Atlas Network <br/>
-            (U24-CA233243-01)<br/>
+            Supported by Roche/Genentech <br/>
             Powered by Sage Bionetworks
         </footer>')
     )
