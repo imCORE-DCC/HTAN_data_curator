@@ -27,7 +27,7 @@ source_python("metadataModelFuns.py")
 #########
 
 ui <- dashboardPage(
-  skin = "purple",
+  skin = "blue",
   dashboardHeader(
     titleWidth = 250,
     title = "Data Curator",
@@ -167,7 +167,7 @@ ui <- dashboardPage(
         img(src = "loading.gif"),
         h4("Retrieving Synapse information...")
       ),
-      color = "#424874"
+      color = "#2B548C"
     )
   )
 )
@@ -328,7 +328,7 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
       spin_plus(), br(),
       h4("Generating link...")
     ),
-    color = "rgba(66, 72, 116, .9)"
+    color = "rgb(43, 84, 140, 0.9)"
   )
 
   ###shows new metadata link when get gsheets template button pressed OR updates old metadata if is exists 
