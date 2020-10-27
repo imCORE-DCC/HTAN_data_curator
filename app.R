@@ -33,8 +33,8 @@ ui <- dashboardPage(
     title = "Data Curator",
     tags$li(class = "dropdown",
             tags$a(href = "https://humantumoratlas.org/", target = "_blank",
-                   tags$img(height = "40px", alt = "HTAN LOGO",
-                            src = "HTAN_text_logo.png")))
+                   tags$img(height = "40px", alt = "imCORE Logo",
+                            src = "imcore-logo.png")))
     ),
   dashboardSidebar(
     width = 250,
