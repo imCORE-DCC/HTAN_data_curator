@@ -164,7 +164,8 @@ ui <- dashboardPage(
     waiter_show_on_load(
       html = tagList(
         img(src = "loading.gif"),
-        h4("Retrieving Synapse information...")
+        h4("Retrieving Synapse credentials..."),
+        h5("This might take a moment.")
       ),
       color = "#2B548C"
     )
@@ -325,7 +326,8 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
   manifest_w <- Waiter$new(
     html = tagList(
       spin_plus(), br(),
-      h4("Generating link...")
+      h4("Generating Google Sheets template..."),
+      h5("This might take a minute or two.")
     ),
     color = "rgb(43, 84, 140, 0.9)"
   )
