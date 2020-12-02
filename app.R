@@ -423,9 +423,10 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
   validate_w <- Waiter$new(
     html = tagList(
       spin_plus(), br(),
-      h4("Validating...")
+      h4("Validating the metadata..."),
+      h5("This might take a minute or two.")
     ),
-    color = "rgba(66, 72, 116, .9)"
+    color = "rgb(43, 84, 140, 0.9)"
   )
 
   ### toggles validation status when validate button pressed
@@ -529,9 +530,10 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
   submit_w <- Waiter$new(
     html = tagList(
       img(src = "loading.gif"),
-      h4("Submitting...")
+      h4("Submitting the metadata to Synapse..."),
+      h5("This might take a minute or two.")
     ),
-    color = "#424874"
+    color = "rgb(43, 84, 140, 1)"
   )
 
   ###submit button
