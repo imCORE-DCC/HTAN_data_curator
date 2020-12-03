@@ -27,14 +27,14 @@ source_python("metadataModelFuns.py")
 #########
 
 ui <- dashboardPage(
-  skin = "purple",
+  skin = "blue",
   dashboardHeader(
     titleWidth = 250,
     title = "Data Curator",
     tags$li(class = "dropdown",
             tags$a(href = "https://humantumoratlas.org/", target = "_blank",
-                   tags$img(height = "40px", alt = "HTAN LOGO",
-                            src = "HTAN_text_logo.png")))
+                   tags$img(height = "40px", alt = "imCORE Logo",
+                            src = "imcore-logo.png")))
     ),
   dashboardSidebar(
     width = 250,
@@ -45,8 +45,7 @@ ui <- dashboardPage(
     menuItem("Get Metadata Template", tabName = "template", icon = icon("table")),
     menuItem("Submit & Validate Metadata", tabName = "upload", icon = icon("upload")),  
     HTML('<footer>
-            Supported by the Human Tumor Atlas Network <br/>
-            (U24-CA233243-01)<br/>
+            Supported by Roche/Genentech <br/>
             Powered by Sage Bionetworks
         </footer>')
     )
@@ -165,9 +164,10 @@ ui <- dashboardPage(
     waiter_show_on_load(
       html = tagList(
         img(src = "loading.gif"),
-        h4("Retrieving Synapse information...")
+        h4("Retrieving Synapse credentials..."),
+        h5("This might take a moment.")
       ),
-      color = "#424874"
+      color = "#2B548C"
     )
   )
 )
@@ -326,9 +326,10 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
   manifest_w <- Waiter$new(
     html = tagList(
       spin_plus(), br(),
-      h4("Generating link...")
+      h4("Generating Google Sheets template..."),
+      h5("This might take a minute or two.")
     ),
-    color = "rgba(66, 72, 116, .9)"
+    color = "rgb(43, 84, 140, 0.9)"
   )
 
   ###shows new metadata link when get gsheets template button pressed OR updates old metadata if is exists 
@@ -422,9 +423,10 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
   validate_w <- Waiter$new(
     html = tagList(
       spin_plus(), br(),
-      h4("Validating...")
+      h4("Validating the metadata..."),
+      h5("This might take a minute or two.")
     ),
-    color = "rgba(66, 72, 116, .9)"
+    color = "rgb(43, 84, 140, 0.9)"
   )
 
   ### toggles validation status when validate button pressed
@@ -528,9 +530,10 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
   submit_w <- Waiter$new(
     html = tagList(
       img(src = "loading.gif"),
-      h4("Submitting...")
+      h4("Submitting the metadata to Synapse..."),
+      h5("This might take a minute or two.")
     ),
-    color = "#424874"
+    color = "rgb(43, 84, 140, 1)"
   )
 
   ###submit button

@@ -22,6 +22,15 @@
     padding-top: 5px
 }
 
+.navbar-custom-menu {
+    background-color: white;
+}
+
+.skin-blue .main-header .navbar,
+.skin-blue .main-header .logo {
+    background-color: #2B548C;
+}
+
 /*** Sidebar ***/
 .left-side, .main-sidebar {
     padding-top: 80px; 
@@ -45,6 +54,7 @@
 #shiny-notification-success {background-color: #82E0AA}
 
 /*** Footer ***/
+
 footer {
     position: absolute; 
     padding: 18px; 
@@ -55,6 +65,32 @@ footer {
     color: #465362; 
     font-size: 10px;
     text-align: center;
-    z-index: 1000
+    z-index: 1000;
 }
 
+.sidebar-menu footer {
+    background-color: #2B548C;
+    color: white;
+    font-weight: 400;
+}
+
+/*** Main Panel ***/
+
+.box.box-solid.box-primary {
+    border: 1px solid #2B548C;
+}
+
+.box.box-solid.box-primary>.box-header {
+    background: #2B548C;
+    background-color: #2B548C;
+}
+
+#Next_Previous {
+    margin-top: 1em;
+}
+
+#Next_Previous button {
+    background-color: #2B548C;
+    color: #fff;
+    border-color: none;
+}
