@@ -549,13 +549,13 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
     ## note for future - the type to filter (eg assay) on could probably also be a config choice
     assay_schemas <- config$manifest_schemas$display_name[config$manifest_schemas$type=="assay"]
 
-    ### and adds entityID, saves it as synapse_storage_manifest.csv, then associates with synapse files 
+    ### and adds entityID, saves it as data_governance.csv, then associates with synapse files 
     if ( input$template_type %in% assay_schemas ) {
       
       ### make into a csv or table for assay components
       ### already has entityId
       if ("entityId" %in% colnames(infile)) {
-        write.csv(infile, file = "./files/synapse_storage_manifest.csv", quote = FALSE, row.names = FALSE, na = "")
+        write.csv(infile, file = "./files/data_governance.csv", quote = FALSE, row.names = FALSE, na = "")
 
       } else {
         # if not get ids
@@ -581,7 +581,7 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
         colnames(files_df) <- c("entityId", "Filename")
         files_entity <- inner_join(infile, files_df, by = "Filename")
 
-        write.csv(files_entity, file = "./files/synapse_storage_manifest.csv", quote = FALSE, row.names = FALSE, na = "")
+        write.csv(files_entity, file = "./files/data_governance.csv", quote = FALSE, row.names = FALSE, na = "")
       }
       selected_project <- input$var
       selected_folder <- input$dataset
@@ -596,13 +596,13 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
       folder_synID <- folders_namedList[[selected_folder]]
 
       ### associates metadata with data and returns manifest id
-      manifest_id <- syn_store$associateMetadataWithFiles(synStore_obj, "./files/synapse_storage_manifest.csv", folder_synID)
+      manifest_id <- syn_store$associateMetadataWithFiles(synStore_obj, "./files/data_governance.csv", folder_synID)
       print(manifest_id)
       manifest_path <- paste0("synapse.org/#!Synapse:", manifest_id)
       ### if no error 
       if (startsWith(manifest_id, "syn") == TRUE) {
         nx_report_success("Success!", paste0("Manifest submitted to: ", manifest_path))
-        rm("./files/synapse_storage_manifest.csv")
+        rm("./files/data_governance.csv")
 
         ### clear inputs 
         output$text2 <- renderUI({
@@ -631,11 +631,11 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
             span(manifest_id, " is not a valid Synapse ID. Try again?")
           )
         )
-        rm("/tmp/synapse_storage_manifest.csv")
+        rm("/tmp/data_governance.csv")
       }
 
     } else {
-      write.csv(infile, file = "./files/synapse_storage_manifest.csv", quote = FALSE, row.names = FALSE, na = "")
+      write.csv(infile, file = "./files/data_governance.csv", quote = FALSE, row.names = FALSE, na = "")
 
       selected_project <- input$var
       selected_folder <- input$dataset
@@ -651,14 +651,14 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
       folder_synID <- folders_namedList[[selected_folder]]
 
       ### associates metadata with data and returns manifest id
-      manifest_id <- syn_store$associateMetadataWithFiles(synStore_obj, "./files/synapse_storage_manifest.csv", folder_synID)
+      manifest_id <- syn_store$associateMetadataWithFiles(synStore_obj, "./files/data_governance.csv", folder_synID)
       print(manifest_id)
       manifest_path <- paste0("synapse.org/#!Synapse:", manifest_id)
 
       ### if uploaded provided valid synID message
       if (startsWith(manifest_id, "syn") == TRUE) {
         nx_report_success("Success!", paste0("Manifest submitted to: ", manifest_path))
-        rm("./files/synapse_storage_manifest.csv")
+        rm("./files/data_governance.csv")
 
         ### clear inputs 
         output$text2 <- renderUI({
@@ -687,7 +687,7 @@ schema_to_display_lookup <- data.frame(schema_name, display_name)
             span(manifest_id, " is not a valid Synapse ID. Try again?")
           )
         )
-        rm("/tmp/synapse_storage_manifest.csv")
+        rm("/tmp/data_governance.csv")
       }
     }
     Sys.sleep(3)
