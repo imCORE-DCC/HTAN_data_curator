@@ -14,7 +14,7 @@ library(shinypop)
 library(waiter)
 
 #########global
-use_condaenv('data_curator_governance_env', required = TRUE)
+use_condaenv('data_curator_staging_env', required = TRUE)
 reticulate::import("sys")
 
 source_python("synLoginFun.py")
