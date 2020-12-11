@@ -1,8 +1,18 @@
 {
   "manifest_schemas": [
     {
-      "display_name": "Data Governance",
-      "schema_name": "DataGovernance",
+      "display_name": "Bulk RNAseq Level 1 Assay",
+      "schema_name": "BulkRNAseqLevel1Assay",
+      "type": "assay"
+    },
+    {
+      "display_name": "Bulk RNAseq Level 2 Assay",
+      "schema_name": "BulkRNAseqLevel2Assay",
+      "type": "assay"
+    },
+    {
+      "display_name": "Bulk RNAseq Level 3 Assay",
+      "schema_name": "BulkRNAseqLevel3Assay",
       "type": "assay"
     }
   ]
