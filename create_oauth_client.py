@@ -11,6 +11,7 @@ client_meta_data = {
         "https://shinypro.synapse.org/users/bgrande/imcore_data_curator",
         "https://shinypro.synapse.org/users/bgrande/imcore_data_curator_staging",
         "https://curator.imcore.io",
+        "http://127.0.0.1:8787",
     ],
     "sector_identifier_uri": "https://raw.githubusercontent.com/imCORE-DCC/data_curator/production/redirect_uris.json",
     "userinfo_signed_response_alg": "RS256",
@@ -38,8 +39,7 @@ client = syn.restPUT(
 )
 
 # Generate and retrieve the client secret:
-client_id_and_secret = syn.restPOST(
-    uri="/oauth2/client/secret/" + client_id, endpoint=syn.authEndpoint, body=""
-)
-
-print(client_id_and_secret)
+# client_id_and_secret = syn.restPOST(
+#     uri="/oauth2/client/secret/" + client_id, endpoint=syn.authEndpoint, body=""
+# )
+# print(client_id_and_secret)
