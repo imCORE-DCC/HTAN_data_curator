@@ -102,7 +102,15 @@ shinyServer(function(input, output, session) {
       projectID <- datatype_list$projects[[input[[paste0(x, "project")]]]]
 
       # gets folders per project
-      folder_list <- synapse_driver$getStorageDatasetsInProject(synStore_obj, projectID) %>% list2Vector()
+      folder_list <- synapse_driver$getStorageDatasetsInProject(synStore_obj, projectID) %>% map_chr(1)
+
+      get_parent_name <- function(synid) {
+        entity <- syn_get(synid, downloadFile=FALSE)
+        parent <- syn_get(entity$parentId, downloadFile=FALSE)
+        parent$name
+      }
+
+      names(folder_list) <- sapply(folder_list, get_parent_name)
 
       if (x == "dropdown_") {
         project_synID <<- projectID

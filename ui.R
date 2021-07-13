@@ -125,7 +125,7 @@ ui <- shinydashboardPlus::dashboardPage(
           box(
             status = "primary",
             width = 6,
-            title = "Choose a Project and Folder: ",
+            title = "Choose a Dataset Folder: ",
             selectInput(
               inputId = "dropdown_project",
               label = "Project:",
@@ -143,10 +143,10 @@ ui <- shinydashboardPlus::dashboardPage(
           box(
             status = "primary",
             width = 6,
-            title = "Choose a Metadata Template Type: ",
+            title = "Choose a Data/Metadata Type: ",
             selectInput(
               inputId = "dropdown_template",
-              label = "Template:",
+              label = "Type:",
               choices = "Generating..."
             )
           )

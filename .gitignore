@@ -21,3 +21,4 @@ token.pickle
 **/__pycache__
 config.yaml
 venv/
+.vscode/settings.json
