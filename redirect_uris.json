@@ -2,5 +2,5 @@
 	"https://shinypro.synapse.org/users/bgrande/imcore_data_curator",
 	"https://shinypro.synapse.org/users/bgrande/imcore_data_curator_staging",
 	"https://curator.imcore.io",
-	"localhost:8100"
+	"https://localhost:8100"
 ]
