@@ -22,3 +22,4 @@ token.pickle
 config.yaml
 venv/
 .vscode/settings.json
+.DS_Store
