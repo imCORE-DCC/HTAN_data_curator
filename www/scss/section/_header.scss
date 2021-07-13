@@ -13,11 +13,16 @@
     font-weight: 600;
   }
 
-  #HTAN_logo a {
+  #DCC_logo a {
+    // height: 50px;
+    // display: table-cell;
+    // vertical-align: middle;
+    // padding: 0 15px;
+    padding: 0;
+  }
+
+  #DCC_logo a img {
     height: 50px;
-    display: table-cell;
-    vertical-align: middle;
-    padding: 0 15px;
   }
 
   // adjust custom dropdown color effect

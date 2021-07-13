@@ -29,7 +29,7 @@ dcWaiter <- function(stage = c("show", "update", "hide"),
           img(src = "img/loading.gif"),
           h4("Retrieving Synapse information...")
         ),
-        color = "#424874"
+        color = "#2B548C"
       )
     } else if (isPass) {
       waiter_update(html = tagList(
@@ -56,7 +56,7 @@ dcWaiter <- function(stage = c("show", "update", "hide"),
     if (stage == "show") {
       waiter_show(
         html = tagList(spin, br(), h3(msg)),
-        color = "rgba(66, 72, 116, .9)"
+        color = "rgb(43, 84, 140, .9)"
       )
     } else {
       Sys.sleep(2) # has to put at least 2s before to make update work

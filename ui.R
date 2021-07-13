@@ -15,7 +15,7 @@ ui <- shinydashboardPlus::dashboardPage(
     titleWidth = 250,
     title = tagList(
       span(class = "logo-lg", "Data Curator"),
-      span(class = "logo-mini", "DCA")
+      span(class = "logo-mini", "DC")
     ),
     leftUi = tagList(
       dropdownBlock(
@@ -27,6 +27,7 @@ ui <- shinydashboardPlus::dashboardPage(
           lapply(datatypes, function(x) {
             div(
               id = paste0("header_content_", x),
+              class = ifelse(x == "project", "element_blank", "element_nonblank"),
               selectInput(
                 inputId = paste0("header_dropdown_", x),
                 label = NULL,
@@ -42,13 +43,13 @@ ui <- shinydashboardPlus::dashboardPage(
       )
     ),
     tags$li(
-      class = "dropdown", id = "HTAN_logo",
+      class = "dropdown", id = "DCC_logo",
       tags$a(
-        href = "https://humantumoratlas.org/",
+        href = "https://synapse.org/imcore",
         target = "_blank",
         tags$img(
-          height = "40px", alt = "HTAN LOGO",
-          src = "img/HTAN_text_logo.png"
+          height = "40px", alt = "imCORE LOGO",
+          src = "img/imcore-logo.png"
         )
       )
     )
@@ -81,17 +82,16 @@ ui <- shinydashboardPlus::dashboardPage(
       # add sidebar footer here
       tags$a(
         id = "sidebar_footer", `data-toggle` = "tab",
-        tags$div(icon("heart")),
-        tags$footer(HTML('Supported by the Human Tumor Atlas Network <br/>
-                  (U24-CA233243-01)<br/>
-                  Powered by <i class="far fa-heart"></i> and Sage Bionetworks'))
+        tags$footer(HTML('Supported by Roche/Genentech <br/>
+                          Powered by Sage Bionetworks'))
       )
     )
   ),
   dashboardBody(
     tags$head(
       tags$style(sass(sass_file("www/scss/main.scss"))),
-      singleton(includeScript("www/js/readCookie.js"))
+      singleton(includeScript("www/js/readCookie.js")),
+      tags$script(htmlwidgets::JS("setTimeout(function(){history.pushState({}, 'Data Curator', window.location.pathname);},2000);"))
     ),
     use_notiflix_report(),
     use_waiter(),
@@ -99,45 +99,49 @@ ui <- shinydashboardPlus::dashboardPage(
       # First tab content
       tabItem(
         tabName = "tab_instructions",
-        h2("Instructions for the Data Curator App (DCA):"),
+        h2("Instructions for the imCORE Data Curator:"),
         h3(
-          "1. Go to",
+          "1. Go to the",
           strong("Select your Dataset"),
-          "tab - select your project; choose your folder and metadata template type matching your metadata."
+          "tab - Choose your dataset folder and the appropriate data/metadata type."
         ),
         h3(
-          "2. Go to",
+          "2. Go to the",
           strong("Get Metadata Template"),
-          "tab - click on the link to generate the metadata template, then fill out and download the file as a CSV. If you already have an annotated metadata template, you may skip this step."
+          "tab - Click on the button to generate the metadata template, fill it out, and download the spreadsheet as a CSV file. If you already have a completed metadata template, you may skip to Step 3."
         ),
         h3(
-          "3. Go to",
+          "3. Go to the",
           strong("Submit and Validate Metadata"),
-          "tab - upload your filled CSV and validate your metadata. If you receive errors correct them, reupload your CSV, and revalidate until you receive no more errors. When your metadata is valid, you will be able to see a 'Submit' button. Press it to submit your metadata."
+          "tab - Upload your completed metadata CSV file and click the validate button. If you receive errors, correct them, re-upload the CSV file, and re-validate until there are no more errors. Click the submit button that will appear once the metadata is valid."
         ),
         switchTabUI("switchTab1", direction = "right")
       ),
       # second tab content
       tabItem(
         tabName = "tab_data",
-        h2("Set Dataset and Metadata Template for Curation"),
+        h2("Select Dataset and Data/Metadata Type"),
         fluidRow(
           box(
             status = "primary",
             width = 6,
             title = "Choose a Dataset Folder: ",
-            selectInput(
-              inputId = "dropdown_project",
-              label = "Project:",
-              choices = "Generating..."
+            tags$div(
+              selectInput(
+                inputId = "dropdown_project",
+                label = "Project:",
+                choices = "Generating...",
+              ),
+              class="element_blank"
             ),
             selectInput(
               inputId = "dropdown_folder",
-              label = "Folder:",
+              # label = "Folder:",
+              label = NULL,
               choices = "Generating..."
             ),
             helpText(
-              "If your recently updated folder does not appear, please wait for Synapse to sync and refresh"
+              "If your recently updated folder does not appear, please wait for Synapse to sync and refresh."
             )
           ),
           box(
@@ -146,8 +150,12 @@ ui <- shinydashboardPlus::dashboardPage(
             title = "Choose a Data/Metadata Type: ",
             selectInput(
               inputId = "dropdown_template",
-              label = "Type:",
+              # label = "Type:",
+              label = NULL,
               choices = "Generating..."
+            ),
+            helpText(
+              "The data/metadata type should match what's specified in the folder name."
             )
           )
         ),
