@@ -1,5 +1,6 @@
 [
 	"https://shinypro.synapse.org/users/bgrande/imcore_data_curator",
 	"https://shinypro.synapse.org/users/bgrande/imcore_data_curator_staging",
-	"https://curator.imcore.io"
+	"https://curator.imcore.io",
+	"http://127.0.0.1:8787"
 ]
