@@ -24,7 +24,9 @@ shinyServer(function(input, output, session) {
 
   ######## session global variables ########
   source_python("functions/synapse_func_alias.py")
-  source_python("functions/metadata_model.py")
+  # source_python("functions/metadata_model.py")
+  schematic_config <- import("schematic")$CONFIG
+  schematic_config$load_config(schematic_config_path)
   # import module that contains SynapseStorage class
   synapse_driver <- import("schematic.store.synapse")$SynapseStorage
   # read config in
