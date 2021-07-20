@@ -222,7 +222,8 @@ shinyServer(function(input, output, session) {
         datatype_list$files <<- list2Vector(file_list)
 
         manifest_url <-
-          metadata_model$getModelManifest(paste0(config$community, " ", input$dropdown_template),
+          metadata_model$getModelManifest(
+            paste0(config$community, " - ", input$dropdown_folder),
             template_schema_name,
             filenames = as.list(names(datatype_list$files)),
             datasetId = folder_synID
